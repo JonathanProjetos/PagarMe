@@ -10,22 +10,27 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      lastName: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       email:{
+        allowNull: false,
         type: Sequelize.STRING,
       },
       hashPassword:{
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+    },{
+      updatedAt: false
     });
   },
   async down(queryInterface, Sequelize) {

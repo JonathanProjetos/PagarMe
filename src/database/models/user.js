@@ -5,14 +5,19 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
 
     static associate(models) {
-      // user.hasMany(models.transaction, {
-      //   foreignKey: 'userId',
-      //   as: 'transactions'
-      // });
+      User.hasMany(models.Transaction, {
+        foreignKey: 'userId',
+        as: 'transactions'
+      });
     }
   }
   User.init({
     name: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+
+    lastName: {
       allowNull: true,
       type: DataTypes.STRING
     },
@@ -29,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    updatedAt: false
   });
   return User;
 };

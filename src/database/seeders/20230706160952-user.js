@@ -10,7 +10,6 @@ module.exports = {
         email: 'test@test.com',
         hashPassword: '$2a$10$ct.1ZS11o6b10aASci3sIe826wQWN/6Rxl.e0XT.y48ZwWGuE3Rt.', // 123456
         createdAt: new Date(),
-        updatedAt: new Date()
       }
     ], {});
   },

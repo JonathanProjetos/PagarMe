@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('transactions', {
+    await queryInterface.createTable('Transactions', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.STRING
       },
 
-      type: {
+      paymentMethod: {
         allowNull: false,
         type: Sequelize.ENUM('debit_card', 'credit_card')
       },
@@ -41,7 +41,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
 
-      cardName: {
+      cardHouderName: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -56,21 +56,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
 
-      payable: {
-        allowNull: false,
-        type: Sequelize.ENUM('waiting_funds', 'paid')
-      },
-
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
 
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-
+    }, {
+      updatedAt: false
     });
   },
 

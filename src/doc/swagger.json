@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Page API",
+    "version": "1.0.0",
+    "description": "Page_Api oferece recursos para o usuário se autenticar e se cadastrar. Quando autenticado, será possível fazer transações de 'cash-in' e 'cash-out'."
+  },
+  "paths": {
+    "/sign-in": {
+      "post": {
+        "summary": "Autenticação",
+        "description": "Autenticação de usuário",
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json" : {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              },
+              "example": {
+                "email": "test@test.com",
+                "password" : "123456"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200": {
+            "description": "Successfully connected",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "token": {
+                    "type": "string"
+                    } 
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description": "User not found",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                }
+              }
+            }
+          },
+          "401":{
+            "description": "Password does not match",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  },
+
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,8 @@ module.exports = {
       const { authorization } = req.headers;
       const filterBearerSwagger = authorization.split(' ').pop('Bearer');
       const dados = token.validateToken(filterBearerSwagger);
-      req.body.email = dados.email;
+      console.log('middleware',dados);
+      req.email = dados.email;
       next();
     } catch (err) {
       console.error(err);

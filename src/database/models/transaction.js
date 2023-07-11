@@ -43,14 +43,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
 
-    cardHouderName: {
+    cardHolderName: {
       allowNull: false,
       type: DataTypes.STRING
     },
 
     cardExpirationDate: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.STRING
     },
 
     cardCvv: {

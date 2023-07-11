@@ -11,7 +11,7 @@ module.exports = {
         description: 'Smartband XYZ 3.0',
         paymentMethod: 'debit_card',
         cardNumber: 123456789,
-        cardHouderName: 'John Doe',
+        cardHolderName: 'John Doe',
         cardExpirationDate: '2021-12-31',
         cardCvv: 123,
         createdAt: new Date(),

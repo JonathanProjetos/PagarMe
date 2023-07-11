@@ -74,8 +74,230 @@
           }
         }
       }
+    },
+    "/register": {
+      "post": {
+        "summary": "Cadastro",
+        "description": "Cadastro de usuário",
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              },
+              "example": {
+                "name": "jonathan",
+                "lastName": "Silva",
+                "email": "test@test.com",
+                "password":"123456"
+              }
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "User created successfully",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                }
+              }
+            }
+          },
+          "409":{
+            "description": "User already registered",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "string",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction": {
+      "get": {
+        "summary": "Transações",
+        "description": "Transações de 'cash-in' e 'cash-out'",
+        "tags": [
+          "Transaction"
+        ],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "properties": {
+                "authorization": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully connected",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                },
+                "example": {
+                  "id": 1,
+                  "name": "John",
+                  "lastName": "Doe",
+                  "email": "test@test.com",
+                  "createdAt": "2023-07-10T19:36:21.000Z",
+                  "transactions": [
+                    {
+                      "id": 1,
+                      "userId": 1,
+                      "amount": "100.00",
+                      "description": "Smartband XYZ 3.0",
+                      "paymentMethod": "debit_card",
+                      "cardNumber": 1234567891234569,
+                      "cardHolderName": "John Doe",
+                      "cardExpirationDate": "2021-12-31",
+                      "cardCvv": 123,
+                      "createdAt": "2023-07-10T19:36:21.000Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401":{
+            "description": "Unauthorized",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                },
+                "example": {
+                  "message": "401|Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Transações",
+        "description": "criação de transações de 'cash-in'",
+        "tags": [
+          "Transaction"
+        ],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "properties": {
+                "authorization": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              },
+              "example": {
+                "amount": "100.00",
+                "description": "Smartband XYZ 3.0",
+                "paymentMethod": "debit_card",
+                "cardNumber": 1234567891234569,
+                "cardHolderName": "John Doe",
+                "cardExpirationDate": "2021-12",
+                "cardCvv": 123
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transação criada com sucesso",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                },
+                "example": {
+                  "id": 1,
+                  "userId": 1,
+                  "amount": "100.00",
+                  "description": "Smartband XYZ 3.0",
+                  "paymentMethod": "debit_card",
+                  "cardNumber": 1234567891234569,
+                  "cardHolderName": "John Doe",
+                  "cardExpirationDate": "2021-12-31",
+                  "cardCvv": 123,
+                  "createdAt": "2023-07-10T19:36:21.000Z"
+                }
+              }
+            }
+          },
+          "401":{
+            "description": "Unauthorized",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                },
+                "example": {
+                  "message": "401|Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
     }
-
   },
 
   "components": {
@@ -90,6 +312,57 @@
             "type": "string"
           }
         }
+      },
+      "Register": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Transaction" : {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "paymentMethod": {
+            "type": "string"
+          },
+          "cardNumber": {
+            "type": "number"
+          },
+          "cardHolderName": {
+            "type": "string"
+          },
+          "cardExpirationDate": {
+            "type": "string"
+          },
+          "cardCvv": {
+            "type": "number"
+          }
+        }
+      }
+    },
+
+    "securitySchemes":{
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

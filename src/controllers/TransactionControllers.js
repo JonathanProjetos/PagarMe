@@ -1,11 +1,16 @@
 const TransactionService = require('../services/TransectionService');
 
 const TransactionController = {
-  getAll: async (req, res) => {
+  getOne: async (req, res) => {
     const { email } = req;
-    console.log('controller',email);
-    const transactions = await TransactionService.getAll(email);
+    const transactions = await TransactionService.getOne(email);
     res.status(200).json(transactions);
+  },
+
+  create: async (req, res) => {
+    const { body, email } = req;
+    const result = await TransactionService.create(body, email);
+    res.status(201).json(result);
   },
 };
 

@@ -11,7 +11,8 @@
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
     "drop": "npx sequelize db:drop",
     "create": "npx sequelize db:create && npx sequelize db:migrate",
-    "seed":"npx sequelize db:seed:all"
+    "seed":"npx sequelize db:seed:all",
+    "railway": "npx sequelize db:create && npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npm run dev"
   },
   "keywords": [],
   "author": "",

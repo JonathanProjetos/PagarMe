@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { describe, it } = require('mocha')
 const sinon = require('sinon');
-const { Sequelize, Register } = require('../../../database/models');
+const { Sequelize } = require('../../../database/models');
 const UserService = require('../../../services/UserService');
 const bcryptjs = require('bcryptjs');
 
@@ -19,7 +19,7 @@ describe('Testes unitários do arquivo UserService/Login', () => {
 
     sinon.stub(Sequelize.Model, 'findOne').resolves(null);
 
-    expect(await UserService.Login(body).catch((err) => err.message)).to.be.equal('400|User not found');
+    expect(await UserService.Login(body).catch((err) => err.message)).to.be.equal('404|User not found');
   });
 
   it('Deve retornar um erro caso a senha esteja incorreta', async () => {

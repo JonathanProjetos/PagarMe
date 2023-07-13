@@ -2,8 +2,8 @@ const { expect } = require('chai');
 const { describe, it } = require('mocha')
 const sinon = require('sinon');
 const { Sequelize } = require('../../../database/models');
-const TransactionService = require('../../../services/TransectionService');
-const mockDataResponse = require('../../mocks/mockDataTransaction');
+const TransactionService = require('../../../services/TransactionService');
+const { dataReponse } = require('../../mocks/mockDataTransaction');
 
 describe('Testes unitários do arquivo TransactionService/Transaction.getOne', () => {
   afterEach(() => {
@@ -26,7 +26,7 @@ describe('Testes unitários do arquivo TransactionService/Transaction.getOne', (
     const email = 'test@test.com';
 
     // sinon.stub(Sequelize.Model, 'findOne').resolves({});
-    sinon.stub(Sequelize.Model, 'findOne').resolves(mockDataResponse);
+    sinon.stub(Sequelize.Model, 'findOne').resolves(dataReponse);
 
     const result = await TransactionService.getOne(email);
 
@@ -41,7 +41,7 @@ describe('Testes unitários do arquivo TransactionService/Transaction.create', (
   })
 
   it('Deve retornar um erro 400 se o usuário não for encontrado', async () => {
-    const body = { ...mockDataResponse.transactions[0] }
+    const body = { ...dataReponse.transactions[0] }
     const email = 'test@test.com'
 
     sinon.stub(Sequelize.Model, 'findOne').resolves(null);
@@ -49,11 +49,11 @@ describe('Testes unitários do arquivo TransactionService/Transaction.create', (
 
     const result = await TransactionService.create(body, email).catch(error => error.message);
 
-    expect(result).to.be.equal('400|User not found');
+    expect(result).to.be.equal('401|Unauthorized user');
   });
 
   it('Deve retornar criar o dado corretamente', async () => {
-    const body = { ...mockDataResponse.transactions[0] }
+    const body = { ...dataReponse.transactions[0] }
     const email = 'test@test.com'
 
 

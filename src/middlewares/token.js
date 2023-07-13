@@ -4,7 +4,8 @@ require('dotenv').config();
 const secret = process.env.JWT_SECRET;
 
 const jwt = {
-
+  
+  // Gera o token de autenticação.
   generateToken: (email) => {
     const token = jsonwebtoken.sign({ email } , secret, {
       expiresIn: '1d',
@@ -13,6 +14,7 @@ const jwt = {
     return token;
   },
 
+  // Valida o token de autenticação.
   validateToken: (token) => {
     if (!token) throw new Error('401|Token not found');
     try {

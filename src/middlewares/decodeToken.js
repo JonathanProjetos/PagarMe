@@ -1,6 +1,8 @@
 const token = require('./token');
 
 module.exports = {
+  
+  // Middleware que verifica se o token é válido.
   verifyToken: (req, _res, next) => {
     try {
       const { authorization } = req.headers;

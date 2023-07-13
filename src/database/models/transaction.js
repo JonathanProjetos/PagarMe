@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as: 'user'
       });
+
+      Transaction.hasOne(models.Payable, {
+        foreignKey: 'id',
+        as: 'payable'
+      });
     }
   }
   
@@ -19,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: 'Users',
         key: 'id'
-      }
-
+      },
+      onUpdate: 'CASCADE',
     },
 
     amount: {
@@ -57,6 +62,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
+
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    }
 
   }, {
     sequelize,

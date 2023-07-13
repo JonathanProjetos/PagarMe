@@ -1,4 +1,4 @@
-const TransactionService = require('../services/TransectionService');
+const TransactionService = require('../services/TransactionService');
 
 const TransactionController = {
   getOne: async (req, res) => {

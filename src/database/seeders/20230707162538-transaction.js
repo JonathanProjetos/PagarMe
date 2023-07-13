@@ -12,9 +12,21 @@ module.exports = {
         paymentMethod: 'debit_card',
         cardNumber: 123456789,
         cardHolderName: 'John Doe',
-        cardExpirationDate: '2021-12-31',
+        cardExpirationDate: '2021-12',
         cardCvv: 123,
-        createdAt: new Date(),
+        createdAt: new Date().toISOString().split("T")[0]
+      },
+      {
+        id: 2,
+        userId: 1,
+        amount: 100.00,
+        description: 'Smartband XYZ 3.0',
+        paymentMethod: 'credit_card',
+        cardNumber: 123456789,
+        cardHolderName: 'John Doe',
+        cardExpirationDate: '2021-12',
+        cardCvv: 123,
+        createdAt: new Date().toISOString().split("T")[0]
       }
   ], {});
   },

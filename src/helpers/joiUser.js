@@ -1,5 +1,6 @@
 const Joi = require('joi');
 
+// Está função esta validando os dados de entrada para login. Caso surja alguma incompatibilidade, retorno o erro personalizado no formato 'status|message'.
 const validateBodyLogin = (body) => {
   const userSchema = Joi.object({
     email: Joi.string().email().required().messages({
@@ -22,7 +23,7 @@ const validateBodyLogin = (body) => {
   return value;
 }
 
-
+// Está função esta validando os dados de cadastro de usuário. Caso surja alguma incompatibilidade, retorno o erro personalizado no formato 'status|message'.
 const validateBodyRegister = (body) => {
 
   const registerSchema = Joi.object({

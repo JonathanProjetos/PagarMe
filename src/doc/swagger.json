@@ -9,7 +9,7 @@
     "/sign-in": {
       "post": {
         "summary": "Autenticação",
-        "description": "Autenticação de usuário",
+        "description": "Autenticação de usuário.",
         "tags": [
           "Auth"
         ],
@@ -28,7 +28,7 @@
         },
         "responses" : {
           "200": {
-            "description": "Successfully connected",
+            "description": "Autenticação efetuada com sucesso.",
             "content":{
               "application/json":{
                 "schema":{
@@ -38,12 +38,15 @@
                     "type": "string"
                     } 
                   }
+                },
+                "example": {
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9......"
                 }
               }
             }
           },
-          "400":{
-            "description": "User not found",
+          "404":{
+            "description": "Usuário não está cadastrado no banco de dados.",
             "content":{
               "application/json":{
                 "schema":{
@@ -53,12 +56,15 @@
                     "type": "string"
                     } 
                   }
+                },
+                "example": {
+                  "message": "User not found"
                 }
               }
             }
           },
           "401":{
-            "description": "Password does not match",
+            "description": "A senha está incorreta.",
             "content":{
               "application/json":{
                 "schema":{
@@ -68,6 +74,9 @@
                     "type": "string"
                     } 
                   }
+                },
+                "example": {
+                  "message": "Password does not match"
                 }
               }
             }
@@ -78,7 +87,7 @@
     "/register": {
       "post": {
         "summary": "Cadastro",
-        "description": "Cadastro de usuário",
+        "description": "Cadastro de usuário.",
         "tags": [
           "Auth"
         ],
@@ -98,8 +107,8 @@
           }
         },
         "responses":{
-          "200": {
-            "description": "User created successfully",
+          "201": {
+            "description": "Cadastro de usuário efetuado com sucesso.",
             "content":{
               "application/json":{
                 "schema":{
@@ -109,12 +118,15 @@
                     "type": "string"
                     } 
                   }
+                },
+                "example": {
+                  "message": "User created successfully"
                 }
               }
             }
           },
           "409":{
-            "description": "User already registered",
+            "description": "Usuário já esta cadastrado no banco de dados.",
             "content":{
               "application/json":{
                 "schema":{
@@ -124,6 +136,9 @@
                     "type": "string"
                     } 
                   }
+                },
+                "example": {
+                  "message": "User already registered"
                 }
               }
             }
@@ -134,7 +149,7 @@
     "/transaction": {
       "get": {
         "summary": "Transações",
-        "description": "Transações de 'cash-in' e 'cash-out'",
+        "description": "Com base na autenticação, será possível visualizar as transações do usuário autenticado.",
         "tags": [
           "Transaction"
         ],
@@ -171,19 +186,43 @@
                   "name": "John",
                   "lastName": "Doe",
                   "email": "test@test.com",
-                  "createdAt": "2023-07-10T19:36:21.000Z",
+                  "createdAt": "2023-07-10",
                   "transactions": [
                     {
                       "id": 1,
                       "userId": 1,
-                      "amount": "100.00",
+                      "amount": 100.00,
                       "description": "Smartband XYZ 3.0",
                       "paymentMethod": "debit_card",
-                      "cardNumber": 1234567891234569,
+                      "cardNumber": 4569,
                       "cardHolderName": "John Doe",
-                      "cardExpirationDate": "2021-12-31",
+                      "cardExpirationDate": "2021-12",
                       "cardCvv": 123,
-                      "createdAt": "2023-07-10T19:36:21.000Z"
+                      "createdAt": "2023-07-10",
+                      "payable": {
+                        "transactionId": 1,
+                        "status": "paid",
+                        "paymentDate": "2023-07-10",
+                        "amount": 97.00
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "userId": 1,
+                      "amount": 100,
+                      "description": "Smartband XYZ 3.0",
+                      "paymentMethod": "credit_card",
+                      "cardNumber": 4569,
+                      "cardHolderName": "John Doe",
+                      "cardExpirationDate": "2021-12",
+                      "cardCvv": 123,
+                      "createdAt": "2023-07-10",
+                      "payable": {
+                        "transactionId": 2,
+                        "status": "waiting_funds",
+                        "paymentDate": "2023-08-09",
+                        "amount": 95
+                      }
                     }
                   ]
                 }
@@ -212,7 +251,7 @@
       },
       "post": {
         "summary": "Transações",
-        "description": "criação de transações de 'cash-in'",
+        "description": "Com base na autenticação, será possível fazer novas transações.",
         "tags": [
           "Transaction"
         ],
@@ -238,7 +277,7 @@
                 "$ref": "#/components/schemas/Transaction"
               },
               "example": {
-                "amount": "100.00",
+                "amount": 100.00,
                 "description": "Smartband XYZ 3.0",
                 "paymentMethod": "debit_card",
                 "cardNumber": 1234567891234569,
@@ -263,16 +302,7 @@
                   }
                 },
                 "example": {
-                  "id": 1,
-                  "userId": 1,
-                  "amount": "100.00",
-                  "description": "Smartband XYZ 3.0",
-                  "paymentMethod": "debit_card",
-                  "cardNumber": 1234567891234569,
-                  "cardHolderName": "John Doe",
-                  "cardExpirationDate": "2021-12-31",
-                  "cardCvv": 123,
-                  "createdAt": "2023-07-10T19:36:21.000Z"
+                  "message": "Transaction created successfully"
                 }
               }
             }
@@ -290,7 +320,84 @@
                   }
                 },
                 "example": {
-                  "message": "401|Unauthorized"
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payable": {
+      "get": {
+        "summary": "Recebíveis",
+        "description": "Recebíveis de transações, os valores de retorno são com base no método de pagamento, havendo taxa de 3% para transações realizadas por cartão de débito e 5% para cartões de crédito.",
+        "tags": [
+          "Payable"
+        ],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "properties": {
+                "authorization": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "properties": {
+                "status": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": "paid or waiting_funds"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A soma dos recebíveis foi resgatada com sucesso.",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                },
+                "example": {
+                  "message": "Balance successfully.",
+                  "status": "paid",
+                  "balance": "$122846.62"
+                }       
+              }
+            }  
+          },
+          "401": {
+            "description": "O usuário não está cadastrado no banco de dados ou o token está incorreto.",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                  "message": {
+                    "type": "string"
+                    } 
+                  }
+                },
+                "example": {
+                  "message": "Unauthorized"
                 }
               }
             }
@@ -334,7 +441,7 @@
         "type": "object",
         "properties": {
           "amount": {
-            "type": "string"
+            "type": "number"
           },
           "description": {
             "type": "string"

@@ -7,11 +7,11 @@ const UserController = {
     res.status(200).json(user);
   },
 
-  Register: async(req, res) => {
+  Register: async (req, res) => {
     const { body } = req;
     const user = await UserServices.Register(body);
     res.status(201).json(user);
-  }
+  },
 };
 
 module.exports = UserController;

@@ -41,33 +41,33 @@ O Node.js foi utilizado com o intuito de obter os benefícios da escalabilidade 
 ## Instalação e Execução
 ### Download do projeto
 ```
-git clone git@github.com:JonathanProjetos/Food-Delivery.git
+git@github.com:JonathanProjetos/PagarMe.git
 ```
 
 ### Arquivo env
-- Dentro da pasta Food-Delivery existe o arquivo .env.example nele será nescessário remover o .example e oferecer a url do MongoDB, e uma senha para o Json-Web-Token.
+- Dentro da pasta PagarMe, existe o arquivo .env.example. Nele, será necessário remover o .example e fornecer os dados para a conexão com o banco de dados, bem como uma senha para o JSON Web Token.
 
-
-### Instalar dependências
+### Instalar as dependências e executar
 ```
-cd Food-Delivery
-docker compose up -d
-
-obs: O comando "docker compose up -d" vai instalar as dependências e tornar a aplicação disponível na porta 3001.
+cd PagarMe
+npm install
+npm run dev
 ```
-### Adicionar os Produtos
-- Após subir os conteiners docker, abra o terminal e rode os comandos abaixo.
+### Comandos Adicionais
 ```
-docker exec -it food_delivery bash
-npm run products:import
-
-obs: Caso queira remover os produtos rode:
-npm run products:destroy
+// Inicialia o Eslint
+npm run lint
+// Dropa o banco de dados
+npm run drop
+// Cria o banco de dados é adiciona as migrates
+npm run create
+// Adiciona os seeders
+npm run seed 
 ```
 
 ### Tests
 ```
-cd Food-Delivery
+cd PagarMe
 npm test
 ou 
 npm run test:coverage

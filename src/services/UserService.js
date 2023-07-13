@@ -1,8 +1,7 @@
-const { User } = require('../database/models');
 const bycrypt = require('bcryptjs');
+const { User } = require('../database/models');
 const jwt = require('../middlewares/token');
 const { validateBodyLogin, validateBodyRegister } = require('../helpers/joiUser');
-
 
 const UserService = {
   Login: async (body) => {
@@ -15,10 +14,10 @@ const UserService = {
     const checkUser = await User.findOne({ where: { email } });
 
     // Caso não exista, retorna um erro.
-    if (!checkUser) throw new Error('400|User not found');
+    if (!checkUser) throw new Error('404|User not found');
 
     // Verifica se a senha informada é a mesma do banco de dados.
-    if (!bycrypt.compareSync(password, checkUser.hashPassword)){
+    if (!bycrypt.compareSync(password, checkUser.hashPassword)) {
       throw new Error('401|Password does not match');
     }
 
@@ -29,11 +28,15 @@ const UserService = {
   },
 
   Register: async (body) => {
-
     // Esta função deve receber um objeto body com name, lastName, email e password.
     const data = validateBodyRegister(body);
 
-    const { email, password } = data;
+    const {
+      name,
+      lastName,
+      email,
+      password,
+    } = data;
 
     // Resgato o usuário no banco de dados com base no email.
     const checkUser = await User.findOne({ where: { email } });
@@ -45,10 +48,15 @@ const UserService = {
     const hashPassword = bycrypt.hashSync(password, 10);
 
     // Cria o usuário no banco de dados.
-    await User.create({ email, hashPassword });
+    await User.create({
+      name,
+      lastName,
+      email,
+      hashPassword,
+    });
 
     return { message: 'User created successfully' };
-  }
-}
+  },
+};
 
 module.exports = UserService;

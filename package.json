@@ -4,9 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "test": "mocha src/tests/unit/**/*.js --exit --timeout 3000",
-    "test:coverage": "nyc --all --include src/models --include src/services --include src/controllers mocha src/tests/unit/**/*.js --exit"
+    "test:coverage": "nyc --all --include src/models --include src/services --include src/controllers mocha src/tests/unit/**/*.js --exit",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
+    "drop": "npx sequelize db:drop",
+    "create": "npx sequelize db:create && npx sequelize db:migrate",
+    "seed":"npx sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +32,9 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "eslint": "^8.44.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.22",
     "nyc": "^15.1.0",

@@ -6,7 +6,7 @@ const PayableController = {
     const { status } = req.query;
     const balance = await PayableServices.getBalance(status, email);
     res.status(200).json(balance);
-  }
+  },
 };
 
 module.exports = PayableController;

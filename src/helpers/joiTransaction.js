@@ -1,12 +1,15 @@
 const Joi = require('joi');
 
+// Está função esta validando os dados de entrada para a realização de uma transação. 
+//Caso surja alguma incompatibilidade, retorno o erro personalizado no formato 'status|message'.
+
 const validadeBodyTransaction = (body) => {
 
   const schemaTRansaction = Joi.object({
     amount: Joi.number().required().messages({
       'any.required': '404|amount is required',
       'number.base': '404|amount must be a number',
-    }),
+    }).strict(),
     description: Joi.string().required().messages({
       'any.required': '404|description is required',
       'string.base': '404|description must be a string',

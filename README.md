@@ -37,8 +37,10 @@ Este projeto utiliza as seguintes tecnologias e ferramentas:
 - [JWT](https://jwt.io/) | Formatador de token seguro.
 
 O Node.js foi utilizado com o intuito de obter os benefícios da escalabilidade e eficiência, pois ele é capaz de lidar com vários tráfegos sem bloqueio e lida com solicitações com baixo consumo de recursos. O Express é um framework para o Node.js que permite construir aplicações web robustas e escaláveis de forma mais fácil e rápida. O MySQL é um banco de dados amplamente utilizado devido a várias razões. Ele oferece desempenho eficiente e rápido, é altamente escalável e possui uma comunidade ativa que fornece suporte e recursos adicionais. Além disso, o MySQL é flexível, seguro e possui integração com tecnologias populares. O Sequelize é uma biblioteca de mapeamento objeto-relacional (ORM) para Node.js, que simplifica a interação com bancos de dados relacionais, incluindo o MySQL. Com o Sequelize, é possível mapear objetos JavaScript para tabelas e colunas no banco de dados, escrever consultas em JavaScript e gerenciar relacionamentos entre tabelas de forma fácil.O uso do JSON Web Tokens (JWT) em aplicações web oferece várias vantagens. O JWT permite autenticar usuários de forma stateless, eliminando a necessidade de armazenar informações de sessão no servidor. Além disso, o JWT é seguro, pois pode ser assinado digitalmente, garantindo a integridade do token.
+### Entities
 
-## Instalação e Execução
+<img src='https://drive.google.com/uc?id=1f7M2e1P9hERtibbc6Wk31tA_tA-dUGzG' alt='entidades'/>
+
 ### Download do projeto
 ```
 git@github.com:JonathanProjetos/PagarMe.git
@@ -55,12 +57,15 @@ npm run dev
 ```
 ### Comandos Adicionais
 ```
-// Inicialia o Eslint
+// Inicializa o Eslint
 npm run lint
+
 // Dropa o banco de dados
 npm run drop
+
 // Cria o banco de dados é adiciona as migrates
 npm run create
+
 // Adiciona os seeders
 npm run seed 
 ```
@@ -77,7 +82,7 @@ npm run test:coverage
 
 ### Swagger
 - Foi implementada a documentação por parte do Swagger, que possibilita testar a aplicação de forma mais rápida e intuitiva.
-- O link para a documentação é [DOC](https://food-delivery-production-fba9.up.railway.app/docs)
+- O link para a documentação é [DOC](https://pagarme-production.up.railway.app/docs)
 - Alguns end-points séra necessessário oferecer o token para o Authorization no swagger. O token será disponibilizado quando for feito o login é como resposta terá o token.
 
 ### Git, GitHub e Histórico de Commits

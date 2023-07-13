@@ -77,7 +77,7 @@ npm run test:coverage
 
 ### Swagger
 - Foi implementada a documentação por parte do Swagger, que possibilita testar a aplicação de forma mais rápida e intuitiva.
-- O link para a documentação é [DOC](https://food-delivery-production-fba9.up.railway.app/docs)
+- O link para a documentação é [DOC](https://pagarme-production.up.railway.app/docs)
 - Alguns end-points séra necessessário oferecer o token para o Authorization no swagger. O token será disponibilizado quando for feito o login é como resposta terá o token.
 
 ### Git, GitHub e Histórico de Commits

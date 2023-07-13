@@ -1,5 +1,7 @@
+// Está função recebe a data expiração do cartão de crédito ou débito.
+// Caso a data seja inválida ou o cartão esteja expirado,
+// retorna um erro personalizado no formato 'status|message'.
 
-// Está função recebe a data expiração do cartão de crédito ou débito. Caso a data seja inválida ou o cartão esteja expirado, retorna um erro personalizado no formato 'status|message'.
 const cardExpirationDateFormat = (date) => {
   const regex = /^(20[2-9][0-9]|2100)-(0[1-9]|1[0-2])$/;
 
@@ -16,7 +18,6 @@ const cardExpirationDateFormat = (date) => {
   }
 
   return `${year}-${month}`;
-  
-}
+};
 
 module.exports = cardExpirationDateFormat;

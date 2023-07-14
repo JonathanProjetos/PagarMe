@@ -44,4 +44,25 @@ const dataReponsePayable = {
 	]
 };
 
-module.exports = {dataReponse, dataReponsePayable};
+const outputPayable = {
+	message: "Ballance successfully",
+	status: "paid",
+	balance: 97.00,
+}
+
+const inputTransaction = {
+	amount: 100.00,
+	description: "Boneco power ranger",
+	paymentMethod: "debit_card",
+	cardNumber: 2345678912345678,
+	cardHolderName: "m3gan eu sou robô",
+	cardExpirationDate: "2021-12",
+	cardCvv: 874,
+}
+
+module.exports = {
+	dataReponse,
+	dataReponsePayable,
+	inputTransaction,
+	outputPayable,
+};

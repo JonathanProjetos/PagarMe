@@ -7,11 +7,13 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "mocha src/tests/unit/**/*.js --exit --timeout 3000",
+    "docker": "npx sequelize db:create && npx sequelize db:migrate",
+    "test:integration": "mocha src/tests/integration/*.js --exit --timeout 3000",
     "test:coverage": "nyc --all --include src/models --include src/services --include src/controllers mocha src/tests/unit/**/*.js --exit",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
     "drop": "npx sequelize db:drop",
     "create": "npx sequelize db:create && npx sequelize db:migrate",
-    "seed":"npx sequelize db:seed:all",
+    "seed": "npx sequelize db:seed:all",
     "railway": "npx sequelize db:create && npx sequelize db:migrate && node src/server.js"
   },
   "keywords": [],
@@ -19,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chai-http": "^4.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eslint-config-trybe-backend": "^2.1.0",

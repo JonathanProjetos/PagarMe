@@ -19,8 +19,13 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // middleware para tratamento de erros.Todos os erros são lançados com o formato 'status|message'.
 app.use((err, _req, res, _next) => {
-  const [status, message] = err.message.split('|');
-  res.status(Number(status)).json({ error: message });
+  if (err.message.split('').includes('|')) {
+    const [status, message] = err.message.split('|');
+    res.status(Number(status)).json({ error: message });
+  } else {
+    console.error('Erro não Mapeado:', err.message);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 module.exports = app;

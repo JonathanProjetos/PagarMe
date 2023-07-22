@@ -8,6 +8,7 @@ A API PagarMe é uma proposta de resolução do desafio técnico da [Pager.me](h
 - [Contexto](#contexto)
 - [Tecnologias e Ferramentas Utilizadas](#tecnologias-e-ferramentas-utilizadas)
 - [Instalar as dependências e executar](#instalar-as-dependências-e-executar)
+- [Docker](#Docker)
 - [Deploy](#Deploy)
 - [Swagger](#Swagger)
 - [Git, GitHub e Histórico de Commits](#git-github-e-histórico-de-commits)

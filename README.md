@@ -69,6 +69,18 @@ npm run create
 // Adiciona os seeders
 npm run seed 
 ```
+### Docker
+ - O tempo de execução do docker-compose terá um acrecimo de cerca de 30 segundos devido as checagens de disponibilidade, os "Health-checks". Este recurso garantirá que tanto o banco de dados quanto a API estejam diponíveis para a execução.
+ - Caso a porta 3001 não seja a mais adequada para você. A mudança da porta deve acontecer tanto no arquivo server.js quanto no docker-compose.yml na parte de services/node/ports e services/node/healthcheck.
+ - Quando executar a aplicação usando o docker-compose up, as dependências necessárias serão instaladas. Além disso, o banco de dados será criado e as migrações serão executadas. Logo após, a aplicação será disponibilizada através do Nodemon na porta 3001.
+```
+cd PagarMe
+docker-compose up -d
+
+- logs docker
+cd PagarMe
+docker logs -f --tail 1000 pagar_bem
+```
 
 ### Tests
 ```

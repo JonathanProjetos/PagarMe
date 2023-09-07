@@ -5,7 +5,6 @@ const sumPayable = require('../helpers/sumPayable');
 const PayableServices = {
   getBalance: async (query, email) => {
     if (!query) throw new Error('400|Status is required');
-
     // Faz a validação do status da query
     const status = joiPayable({ status: query });
 

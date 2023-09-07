@@ -60,9 +60,17 @@ const inputTransaction = {
 	cardCvv: 874,
 }
 
+const User = {
+	id: 1,
+	name: "m3gan eu sou robô",
+	lastName: null,
+	email: 'test@test.com'
+}
+
 module.exports = {
 	dataReponse,
 	dataReponsePayable,
 	inputTransaction,
 	outputPayable,
+	User
 };

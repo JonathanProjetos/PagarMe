@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Page API",
+    "title": "PagarMe_API",
     "version": "1.0.0",
-    "description": "Page_Api oferece recursos para o usuário se autenticar e se cadastrar. Quando autenticado, será possível fazer transações de 'cash-in' e 'cash-out'."
+    "description": "PagarMe_API oferece recursos para o usuário se autenticar e se cadastrar. Quando autenticado, será possível fazer transações de 'cash-in' e 'cash-out'."
   },
   "paths": {
     "/sign-in": {

@@ -39,8 +39,8 @@ Este projeto utiliza as seguintes tecnologias e ferramentas:
 
 O Node.js foi utilizado com o intuito de obter os benefícios da escalabilidade e eficiência, pois ele é capaz de lidar com vários tráfegos sem bloqueio e lida com solicitações com baixo consumo de recursos. O Express é um framework para o Node.js que permite construir aplicações web robustas e escaláveis de forma mais fácil e rápida. O MySQL é um banco de dados amplamente utilizado devido a várias razões. Ele oferece desempenho eficiente e rápido, é altamente escalável e possui uma comunidade ativa que fornece suporte e recursos adicionais. Além disso, o MySQL é flexível, seguro e possui integração com tecnologias populares. O Sequelize é uma biblioteca de mapeamento objeto-relacional (ORM) para Node.js, que simplifica a interação com bancos de dados relacionais, incluindo o MySQL. Com o Sequelize, é possível mapear objetos JavaScript para tabelas e colunas no banco de dados, escrever consultas em JavaScript e gerenciar relacionamentos entre tabelas de forma fácil.O uso do JSON Web Tokens (JWT) em aplicações web oferece várias vantagens. O JWT permite autenticar usuários de forma stateless, eliminando a necessidade de armazenar informações de sessão no servidor. Além disso, o JWT é seguro, pois pode ser assinado digitalmente, garantindo a integridade do token.
 ### Entities
-
-<img src='https://drive.google.com/uc?id=1f7M2e1P9hERtibbc6Wk31tA_tA-dUGzG' alt='entidades'/>
+https://drive.google.com/file/d/1av8kgGIu6AWP81UC5Xp0t0t-Jmf4QYb4/view?usp=sharing
+<img src='https://drive.google.com/file/d/1av8kgGIu6AWP81UC5Xp0t0t-Jmf4QYb4' alt='entidades'/>
 
 ### Download do projeto
 ```

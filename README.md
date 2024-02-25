@@ -1,7 +1,7 @@
-# Bem-vindo ao Projeto Lista de Pessoas
+# Bem-vindo ao PagarMe
 A API PagarMe é uma proposta de resolução do desafio técnico da [Pager.me](https://github.com/pagarme/vagas/blob/master/desafios/software-engineer-backend/README.md) e oferece um sistema de Payment Service Provider (PSP) super simplificado. Para esta proposta, foi adicionado um sistema de cadastro para que o usuário cadastrado possa realizar transações financeiras quando autorizado. Esta aplicação gera autenticação utilizando bearer token através do JWT e tem como propósito simular o ciclo de uso, que se inicia com o cadastro, autorização e manipulação dos dados. Espero que gostem, foi muito divertido desenvolver esta solução.
  
-<details>Back-end
+</details>
 
 ## Sumário
 - [Bem-vindo ao PagarMe](#Bem-vindo-ao-PagarMe)
@@ -93,6 +93,15 @@ npm run test:coverage
 ### Deploy
 - Foi realizado o deploy da aplicação no Railway. Logo abaixo, está o link de acesso para a aplicação através do Swagger.
 
+### Swagger
+- Foi implementada a documentação por parte do Swagger, que possibilita testar a aplicação de forma mais rápida e intuitiva.
+- O link para a documentação é [DOC](https://pagarme-production.up.railway.app/docs)
+- Alguns end-points séra necessessário oferecer o token para o Authorization no swagger. O token será disponibilizado quando for feito o login é como resposta terá o token. Caso você não forneça o token para a autorização, os endpoints que dependem dele entrarão em um loop no estado de carregamento (loading).
+
+
+### Git, GitHub e Histórico de Commits
+Este projeto utilizou a [Especificação de Commits Convencionais](https://www.conventionalcommits.org/en/v1.0.0/), com alguns tipos da [convenção Angular](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines). Além disso, foi utilizado o pacote [conventional-commit-cli](https://www.npmjs.com/package/conventional-commit-cli) para ajudar a seguir a convenção de commits. É importante utilizar a convenção de commits em projetos para manter o histórico de commits organizado e facilitar a leitura e o entendimento do que foi desenvolvido.
+
+
 ### Lint
 - O projeto foi desenvolvido seguindo os padrões de Clean Code especificados pelo [Lint da Trybe](https://github.com/betrybe/eslint-config-trybe).
-</details>

@@ -1,7 +1,7 @@
-# Bem-vindo ao PagarMe
+# Bem-vindo ao Projeto Lista de Pessoas
 A API PagarMe é uma proposta de resolução do desafio técnico da [Pager.me](https://github.com/pagarme/vagas/blob/master/desafios/software-engineer-backend/README.md) e oferece um sistema de Payment Service Provider (PSP) super simplificado. Para esta proposta, foi adicionado um sistema de cadastro para que o usuário cadastrado possa realizar transações financeiras quando autorizado. Esta aplicação gera autenticação utilizando bearer token através do JWT e tem como propósito simular o ciclo de uso, que se inicia com o cadastro, autorização e manipulação dos dados. Espero que gostem, foi muito divertido desenvolver esta solução.
  
-<details> <strong>Back-end</strong>
+<details>Back-end
 
 ## Sumário
 - [Bem-vindo ao PagarMe](#Bem-vindo-ao-PagarMe)
